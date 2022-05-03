@@ -25,7 +25,9 @@ cd p202-contracts
 npm install
 node scripts/process-templates.js --bor-chain-id $1
 npm run truffle:compile
+npm run flatten
 cd ..
 node generate-borvalidatorset.js --bor-chain-id $1 --heimdall-chain-id $2
 npm run truffle:compile
+npm run flatten
 node generate-genesis.js --bor-chain-id $1 --heimdall-chain-id $2
