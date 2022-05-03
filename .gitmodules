@@ -1,0 +1,3 @@
+[submodule "p202-contracts"]
+	path = p202-contracts
+	url = https://github.com/p202io/contracts.git
