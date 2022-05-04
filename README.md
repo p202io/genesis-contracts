@@ -10,7 +10,7 @@ $ git submodule init
 $ git submodule update
 ```
 
-### 2. Compile Matic contracts
+### 2. Compile Project202 contracts
 ```bash
 $ cd p202-contracts
 $ npm install
