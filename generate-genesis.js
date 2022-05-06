@@ -11,7 +11,7 @@ const validators = require("./validators")
 require("./generate-borvalidatorset")
 
 program.version("0.0.1")
-program.option("-c, --bor-chain-id <bor-chain-id>", "Bor chain id", "15001")
+program.option("-c, --side-chain-id <side-chain-id>", "Side chain id", "15001")
 program.option(
   "-o, --output <output-file>",
   "Genesis json file",
@@ -111,7 +111,7 @@ Promise.all([
 
   const contractBalance = totalMaticSupply.sub(validatorsBalance)
   const data = {
-    chainId: program.borChainId,
+    chainId: program.sideChainId,
     validators: validators,
     maticChildERC20ContractBalance: web3.utils.toHex(
       web3.utils.toWei(contractBalance.toString())

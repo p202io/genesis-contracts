@@ -5,10 +5,10 @@ const web3 = require("web3")
 const validators = require("./validators")
 
 program.version("0.0.1")
-program.option("--bor-chain-id <bor-chain-id>", "Bor chain id", "15001")
+program.option("--side-chain-id <side-chain-id>", "Side chain id", "15001")
 program.option(
-  "--heimdall-chain-id <heimdall-chain-id>",
-  "Heimdall chain id",
+  "--validator-chain-id <validator-chain-id>",
+  "Validator chain id",
   "heimdall-P5rXwg"
 )
 program.option(
@@ -34,12 +34,12 @@ validators.forEach(v => {
 })
 
 const data = {
-  borChainId: program.borChainId,
-  heimdallChainId: program.heimdallChainId,
+  borChainId: program.sideChainId,
+  heimdallChainId: program.validatorChainId,
   firstEndBlock: program.firstEndBlock,
   validators: validators
 }
 const templateString = fs.readFileSync(program.template).toString()
 const resultString = nunjucks.renderString(templateString, data)
 fs.writeFileSync(program.output, resultString)
-console.log("Bor validator set file updated.")
+console.log("Side chain validator set file updated.")
