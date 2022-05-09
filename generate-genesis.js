@@ -103,15 +103,23 @@ Promise.all([
 ]).then(result => {
   const totalMaticSupply = web3.utils.toBN("500000000")
 
+  const deployer = {
+    address: "0x5d807065619f1970C6624dab32Afea530d3A5731",
+    balance: 1000,
+  }
+  var deployerBalance = web3.utils.toBN(deployer.balance);
+  deployer.balance = web3.utils.toHex(web3.utils.toWei(String(deployer.balance)))
+
   var validatorsBalance = web3.utils.toBN(0)
   validators.forEach(v => {
     validatorsBalance = validatorsBalance.add(web3.utils.toBN(v.balance))
     v.balance = web3.utils.toHex(web3.utils.toWei(String(v.balance)))
   })
 
-  const contractBalance = totalMaticSupply.sub(validatorsBalance)
+  const contractBalance = totalMaticSupply.sub(validatorsBalance).sub(deployerBalance)
   const data = {
     chainId: program.sideChainId,
+    deployer: deployer,
     validators: validators,
     maticChildERC20ContractBalance: web3.utils.toHex(
       web3.utils.toWei(contractBalance.toString())

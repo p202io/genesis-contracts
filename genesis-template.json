@@ -31,7 +31,7 @@
     }
   },
   "nonce": "0x0",
-  "timestamp": "0x62750dc0",
+  "timestamp": "0x62765f40",
   "extraData": "",
   "gasLimit": "0x989680",
   "difficulty": "0x1",
@@ -49,6 +49,9 @@
     "0000000000000000000000000000000000001010": {
       "balance": "{{ maticChildERC20ContractBalance }}",
       "code": "0x{{maticChildERC20Contract}}"
+    },
+    "{{ deployer.address.replace('0x', '') }}": {
+      "balance": "{{ deployer.balance }}"
     }{% for v in validators %},
     "{{ v.address.replace('0x', '') }}": {
       "balance": "{{ v.balance }}"
